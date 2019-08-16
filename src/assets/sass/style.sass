@@ -15,17 +15,20 @@ html
   font-size: 10px
 
 body
+  width: 100vw
+  min-height: 100vh
   overflow-x: hidden
 
 .close
   position: absolute
   top: -50px
   right: 50px
-  width: 40px
+  //width: 40px
   height: 40px
-  z-index: 10
+  z-index: 2
   cursor: pointer
   transition: top .5s
+  outline: transparent
 
   &.show
     top: 50px
@@ -34,3 +37,33 @@ body
     font-size: 4rem
     color: $subColor
     transition: color 1s
+    cursor: pointer
+    outline: transparent
+
+.menu
+  position: absolute
+  top: -50px
+  left: 0
+  transition: top .5s
+  z-index: 4
+
+  &.color i
+    color: $mainColor
+
+  i
+    font-size: 4rem
+    color: $subColor
+    transition: color 1s
+    cursor: pointer
+    visibility: hidden
+
+@media (max-width: 425px)
+  .close
+    right: 0
+
+    &.show
+      top: 10px
+
+  .menu
+    &.show
+      top: 10px
