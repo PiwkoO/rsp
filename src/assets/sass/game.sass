@@ -10,6 +10,7 @@
   height: 100vh
   background-color: $mainColor
   transition: left 1s
+  overflow: hidden
 
   &.active
     left: 0
@@ -25,9 +26,13 @@
     top: -100%
     left: 0
     display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: flex-start
     width: 100vw
     background-color: $subColor
     transition: top .5s 1s
+    z-index: 1
 
     p
       font-family: $primaryFont
@@ -39,6 +44,7 @@
 
   .cards
     display: flex
+    flex-direction: row
     justify-content: space-around
     width: 100%
 
@@ -77,9 +83,72 @@
     border-radius: 5px
     margin: 60px
     font-size: 20px
-    width: 200px
+    width: 300px
+    background-color: $subColor
     outline: transparent
     cursor: pointer
 
     &:hover
       background-color: $hoverLight
+
+.game.active ~ .close i.icon-cancel
+  display: block
+
+  .game.active ~ .close i.icon-menu
+    display: none
+    color: $subColor
+
+@media (max-width: 768px)
+  .game
+    .start
+      margin: 100px
+
+@media (max-width: 425px)
+  .game
+
+    &.active ~ .close i
+      color: $subColor
+
+    &.active ~ .menu i
+      top: 10px
+      visibility: visible
+
+    &.active .results
+      top: -100%
+
+    .results
+      display: flex
+      flex-direction: column
+      align-items: center
+      z-index: 3
+      transition: top .5s 0s
+
+      &.active
+        top: 0
+
+      p
+        padding: 10px 0
+        font-size: 4rem
+
+        &:first-of-type
+          margin-top: 50px
+
+        span
+          font-size: 4rem
+
+    .cards
+      flex-direction: column
+      height: calc(95vh - 60px)
+
+    div
+      width: 60vw
+      height: 45vw
+      align-self: center
+
+    .start
+      border-radius: 0
+      margin: 0
+      width: 100vw
+
+      &:hover
+        background-color: $subColor
