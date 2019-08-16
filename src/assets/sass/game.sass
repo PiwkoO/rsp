@@ -1,0 +1,85 @@
+.game
+  position: absolute
+  top: 0
+  left: -100%
+  display: flex
+  flex-flow: column nowrap
+  justify-content: flex-end
+  align-items: center
+  width: 100vw
+  height: 100vh
+  background-color: $mainColor
+  transition: left 1s
+
+  &.active
+    left: 0
+
+  &.active ~ .close i
+    color: $mainColor
+
+  &.active .results
+    top: 0
+
+  .results
+    position: absolute
+    top: -100%
+    left: 0
+    display: flex
+    width: 100vw
+    background-color: $subColor
+    transition: top .5s 1s
+
+    p
+      font-family: $primaryFont
+      padding: 50px 0 50px 100px
+      font-size: 4rem
+
+      span
+        font-size: 4rem
+
+  .cards
+    display: flex
+    justify-content: space-around
+    width: 100%
+
+  div
+    display: flex
+    border: 2px solid $subColor
+    border-radius: 10px
+    width: 25vw
+    height: 25vw
+    background-color: $subColor
+    cursor: pointer
+
+    &.choosed
+      box-shadow: 0 0 40px rgba(255, 255, 255, .8)
+
+    &.win
+      box-shadow: 0 0 40px rgba(128, 232, 12, .8)
+
+    &.lose
+      box-shadow: 0 0 40px rgba(255, 69, 13, .8)
+
+    &.draw
+      box-shadow: 0 0 40px rgba(255, 222, 0, .8)
+
+    &:hover
+      box-shadow: 0 0 40px rgba(255, 255, 255, .8)
+
+    i
+      margin: auto
+      font-size: 10rem
+
+  .start
+    display: block
+    padding: 20px 40px
+    border: 2px solid $subColor
+    border-radius: 5px
+    margin: 60px
+    font-size: 20px
+    width: 200px
+    outline: transparent
+    cursor: pointer
+
+    &:hover
+      background-color: $hoverLight

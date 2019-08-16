@@ -1,0 +1,36 @@
+@import "variables"
+@import "font-icon"
+@import "font-codes"
+@import "anim"
+@import "main"
+@import "instruction"
+@import "game"
+
+*
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+
+html
+  font-size: 10px
+
+body
+  overflow-x: hidden
+
+.close
+  position: absolute
+  top: -50px
+  right: 50px
+  width: 40px
+  height: 40px
+  z-index: 10
+  cursor: pointer
+  transition: top .5s
+
+  &.show
+    top: 50px
+
+  i
+    font-size: 4rem
+    color: $subColor
+    transition: color 1s
