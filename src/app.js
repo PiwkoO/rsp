@@ -1,42 +1,58 @@
-import './assets/sass/style.sass';
+const showPlayerScore = document.querySelector('.player-score');
+const showAiScore = document.querySelector('.ai-score');
+const startButton = document.querySelector('.start');
+const cards = [...document.querySelectorAll('.cards div')];
 
-const playButton = document.querySelector('.play');
-const howToButton = document.querySelector('.how');
-const closeButton = document.querySelector('.close');
-const menuButton = document.querySelector('.menu');
-
-const rulesPage = document.querySelector('.rules');
-const gamePage = document.querySelector('.game');
-const gameResult = document.querySelector('.results');
-
-const showGame = () => {
-    gamePage.classList.add('active');
-    setTimeout(animButton, 1000);
+const ai = {
+    select: null,
+    score: 0,
 };
 
-const showResults = () => {
-    gameResult.classList.toggle('active');
-    menuButton.classList.toggle('color')
+const player = {
+    select: null,
+    score: 0,
 };
 
-const showRules = () => {
-    rulesPage.classList.add('active');
-    setTimeout(animButton, 1000);
+const checkCards = () => {
+    if (player.select != null) {
+        checkResult();
+    } else {
+        cards.forEach(card => card.classList.add('lose'));
+    }
 };
 
-const animButton = () => {
-    closeButton.classList.add('show');
-    menuButton.classList.add('show');
+const selectCard = function () {
+    cards.forEach(card => card.classList.remove('selected', 'win', 'lose', 'draw'));
+    this.classList.add('selected');
+    player.select = cards.indexOf(this);
 };
 
-const closeWindow = () => {
-    rulesPage.classList.remove('active');
-    gamePage.classList.remove('active');
-    closeButton.classList.remove('show');
-    menuButton.classList.remove('show');
+const aiChoice = () => ai.select = Math.floor(Math.random() * cards.length);
+
+const checkResult = () => {
+    if (player.select === ai.select) cards.forEach(card => card.classList.add('draw'));
+    else if ((player.select === 0 && ai.select === 1) || (player.select === 1 && ai.select === 2) || (player.select === 2 && ai.select === 0)) {
+        player.score++;
+        cards.forEach(card => card.classList.add('win'));
+    } else {
+        ai.score++;
+        cards.forEach(card => card.classList.add('lose'));
+    }
 };
 
-menuButton.addEventListener('click', showResults);
-closeButton.addEventListener('click', closeWindow);
-howToButton.addEventListener('click', showRules);
-playButton.addEventListener('click', showGame);
+const reset = () => {
+    cards.forEach(card => card.classList.remove('selected', 'win', 'lose', 'draw'));
+    player.select = null;
+    ai.select = null;
+};
+
+const startGame = () => {
+    aiChoice();
+    checkCards();
+    showPlayerScore.textContent = player.score;
+    showAiScore.textContent = ai.score;
+    setTimeout(reset, 1000);
+};
+
+cards.forEach(card => card.addEventListener('click', selectCard));
+startButton.addEventListener('click', startGame);
