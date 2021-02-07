@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock, scissors, paper game</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,700|Quicksand:400,700&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="fonts.css">
+</head>
+<body>
+  <div class="home">
+    <h1 class="title">Rock, scissors, paper</h1>
+    <div class="image"></div>
+    <button class="play">Play <i class="icon-play"></i></button>
+    <button class="how">How to <i class="icon-help"></i></button>
+  </div>
+  <div class="rules">
+    <h2>Rules?</h2>
+    <h2>How to play?</h2>
+    <p>Rock, scissors, paper is a hand game usually played shapes are <i class="icon-hand-grab-o">rock</i>, <i class="icon-hand-scissors-o">scissors</i> and <i class="icon-hand-paper-o">paper</i>. A simultaneous, zero-sum game, it has only two possible outcomes: a draw, or a win for one player and a loss for other.
+    <br>
+    A player who decides to play rock will beat another player who has chosen scissors, but will lose to one who has played paper. A play of paper will lose to a play of scissors. If both players choose the same shape, the game is tied.</p>
+    <p>Select one of the symbols and confirm with the button <i class="icon-play"></i>. If you win the field will glow green and you will get a point. In case of loss, the field woll glow red and the computer will score a point. When box will glow yellow it means a draw and no one will get a point.</p>
+  </div>
+  <div class="game">
+    <section class="results">
+      <p>Your score: <span class="player-score">0</span></p>
+      <p>Your AI: <span class="ai-score">0</span></p>
+    </section>
+    <section class="cards">
+      <div class="rock">
+        <i class="icon-hand-grab-o"></i>
+      </div>
+      <div class="scissors">
+        <i class="icon-hand-scissors-o"></i>
+      </div>
+      <div class="paper">
+        <i class="icon-hand-paper-o"></i>
+      </div>
+    </section>
+    <button class="start">
+      <i class="icon-play"></i>
+    </button>
+  </div>
+  <div class="close">
+    <i class="icon-cancel"></i>
+  </div>
+  <!-- <div class="menu">
+    <i class="icon-menu"></i>
+  </div> -->
+  <script src="main.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
